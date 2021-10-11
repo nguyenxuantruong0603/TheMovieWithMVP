@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">TheMovieWithMVP</string>
+    <string name="api_key_movie">8601e59580df086ab5ee641cead2d9b5</string>
+    -- Login Activity --
+    <string name="mvp_login">MVP Login</string>
+    <string name="username">UserName</string>
+    <string name="password">PassWord</string>
+    <string name="login">Login</string>
+    <string name="signup">SignUp</string>
+    -- SignUp Activity --
+    <string name="mvp_signup">MVP SignUp</string>
+    <string name="clear_text">Clear Text</string>
+    <string name="full_name">Full Name</string>
+    <string name="age">Age</string>
+    <string name="address">Address</string>
+    <string name="title_activity_home">MainActivity</string>
+
+    -- Home Activity --
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_user">User</string>
+    <string name="trending">Trending</string>
+    <string name="new_movies">New Movies</string>
+</resources>
