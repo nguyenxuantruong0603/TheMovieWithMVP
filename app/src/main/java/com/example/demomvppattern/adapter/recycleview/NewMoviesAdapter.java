@@ -1,4 +1,4 @@
-package com.example.demomvppattern.adapter;
+package com.example.demomvppattern.adapter.recycleview;
 
 import android.view.LayoutInflater;
 import android.view.View;

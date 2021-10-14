@@ -6,8 +6,8 @@ import android.widget.Toast;
 import com.example.demomvppattern.listener.IDetailMovieContract;
 
 public class DetailMoviePresenter implements IDetailMovieContract.Presenter {
-    private IDetailMovieContract.DetailView detailView;
-    private Context context;
+    private final IDetailMovieContract.DetailView detailView;
+    private final Context context;
 
     public DetailMoviePresenter(IDetailMovieContract.DetailView detailView, Context context) {
         this.detailView = detailView;

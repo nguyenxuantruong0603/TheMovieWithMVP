@@ -15,8 +15,6 @@ public interface IHomeContract {
 
     interface HomeView {
 
-        void setUpUI();
-
         String getKeyTheMovie();
 
         void setDataToRecycle(List<TheMovie> theMovieList);

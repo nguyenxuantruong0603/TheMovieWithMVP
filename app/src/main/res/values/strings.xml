@@ -21,4 +21,8 @@
     <string name="title_user">User</string>
     <string name="trending">Trending</string>
     <string name="new_movies">New Movies</string>
+    <string name="book_now">Book Now</string>
+    <string name="cast">Cast</string>
+    <string name="action">Action</string>
+    <string name="horror">Horror</string>
 </resources>

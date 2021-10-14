@@ -17,7 +17,6 @@ public class HomePresenter implements IHomeContract.Presenter, IHomeContract.API
 
     public HomePresenter(IHomeContract.HomeView homeView) {
         this.homeView = homeView;
-        homeView.setUpUI();
         theMovieRepo = new TheMovieRepository();
     }
 
