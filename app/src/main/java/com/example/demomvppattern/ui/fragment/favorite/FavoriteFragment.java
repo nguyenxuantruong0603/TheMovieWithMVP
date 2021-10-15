@@ -18,9 +18,9 @@ import com.example.demomvppattern.R;
 import com.example.demomvppattern.adapter.recycleview.NewMoviesAdapter;
 import com.example.demomvppattern.adapter.viewpager.ImageSlideAdapter;
 import com.example.demomvppattern.listener.IClickItemAdapter;
-import com.example.demomvppattern.listener.IHomeContract;
+import com.example.demomvppattern.listener.IFavouriteContract;
 import com.example.demomvppattern.model.movie.TheMovie;
-import com.example.demomvppattern.presenter.home.HomePresenter;
+import com.example.demomvppattern.presenter.favourite.FavouritePresenter;
 import com.example.demomvppattern.ui.activity.DetailActivity;
 
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +31,7 @@ import java.util.Objects;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class FavoriteFragment extends Fragment implements IHomeContract.HomeView, IClickItemAdapter {
+public class FavoriteFragment extends Fragment implements IFavouriteContract.HomeView, IClickItemAdapter {
 
     private final List<TheMovie> movieList = new ArrayList<>();
     private NewMoviesAdapter newMoviesAdapter;
@@ -55,8 +55,8 @@ public class FavoriteFragment extends Fragment implements IHomeContract.HomeView
         rcMewMovies = view.findViewById(R.id.rcNewMovie);
         indicator = view.findViewById(R.id.indicator);
 
-        HomePresenter homePresenter = new HomePresenter(this);
-        homePresenter.getListMovieFromAPI();
+        FavouritePresenter favouritePresenter = new FavouritePresenter(this);
+        favouritePresenter.getListMovieFromAPI();
     }
 
     @Override

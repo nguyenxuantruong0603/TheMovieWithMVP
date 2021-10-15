@@ -1,38 +1,48 @@
 package com.example.demomvppattern.listener;
 
-import com.example.demomvppattern.model.movie.ResultTheMovie;
-import com.example.demomvppattern.model.movie.TheMovie;
+import com.example.demomvppattern.model.mymovie.MyMovie;
 
 import java.util.List;
 
-import retrofit2.Response;
-
 public interface IHomeContract {
 
-    interface TheMovieRepo {
-        void getListMovie(String key, final APIListener apiListener);
+    interface View {
+        void setUpDataToRecycle(List<MyMovie> myMovieList);
     }
 
-    interface HomeView {
+    interface MyMovieRepo {
+        void getListMyMovie();
 
-        String getKeyTheMovie();
+        void addMyMovie(MyMovie myMovie);
 
-        void setDataToRecycle(List<TheMovie> theMovieList);
+        void updateMyMovie(String movieName, String title, String desc, Boolean video);
 
-        void showProgressBar();
-
-        void hideProgressBar();
+        void deleteMyMovie(String movieName);
     }
 
-    interface APIListener {
-        void onSuccess(Response<ResultTheMovie> theMovieResponse);
+    interface MyMovieListener {
+        void addDataSuccess(String message);
 
-        void onError(Response<ResultTheMovie> theMovieResponse);
+        void addDataError(String error);
 
-        void onFailure(String message);
+        void updateDataSuccess(String message);
+
+        void updateDataError(String error);
+
+        void deleteDataSuccess(String message);
+
+        void deleteDataError(String error);
+
+        void getAllMovie(List<MyMovie> myMovieList);
     }
 
     interface Presenter {
-        void getListMovieFromAPI();
+        void getAllMyMovieFromRealm();
+
+        void addMovie(MyMovie myMovie);
+
+        void updateMovie(String movieName, String title, String desc, Boolean video);
+
+        void deleteMovie(String movieName);
     }
 }

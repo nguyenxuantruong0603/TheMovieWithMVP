@@ -3,41 +3,74 @@ package com.example.demomvppattern.presenter.home;
 import android.util.Log;
 
 import com.example.demomvppattern.listener.IHomeContract;
-import com.example.demomvppattern.model.movie.ResultTheMovie;
-import com.example.demomvppattern.model.movie.TheMovieRepository;
+import com.example.demomvppattern.model.mymovie.MyMovie;
+import com.example.demomvppattern.model.mymovie.MyMovieRepository;
 
-import java.util.Objects;
+import java.util.List;
 
-import retrofit2.Response;
+public class HomePresenter implements IHomeContract.MyMovieListener, IHomeContract.Presenter {
+    private final MyMovieRepository myMovieRepository;
+    private final IHomeContract.View view;
 
-public class HomePresenter implements IHomeContract.Presenter, IHomeContract.APIListener {
+    public HomePresenter(IHomeContract.View view) {
+        myMovieRepository = new MyMovieRepository(this);
+        this.view = view;
+    }
 
-    private final IHomeContract.HomeView homeView;
-    private final TheMovieRepository theMovieRepo;
-
-    public HomePresenter(IHomeContract.HomeView homeView) {
-        this.homeView = homeView;
-        theMovieRepo = new TheMovieRepository();
+    /*MyMovieListener Interface*/
+    @Override
+    public void addDataSuccess(String message) {
+        Log.e("addDataSuccess", message);
     }
 
     @Override
-    public void getListMovieFromAPI() {
-        theMovieRepo.getListMovie(homeView.getKeyTheMovie(), this);
+    public void addDataError(String error) {
+        Log.e("addDataError", error);
     }
 
     @Override
-    public void onSuccess(Response<ResultTheMovie> theMovieResponse) {
-        homeView.setDataToRecycle(Objects.requireNonNull(theMovieResponse.body()).getTheMovies());
-        Log.e("onSuccess", theMovieResponse.body().getTheMovies().size() + "");
+    public void updateDataSuccess(String message) {
+        Log.e("updateDataSuccess", message);
     }
 
     @Override
-    public void onError(Response<ResultTheMovie> theMovieResponse) {
-        Log.e("onError", theMovieResponse.code() + "");
+    public void updateDataError(String error) {
+        Log.e("updateDataError", error);
     }
 
     @Override
-    public void onFailure(String message) {
-        Log.e("onFailure", message);
+    public void deleteDataSuccess(String message) {
+        Log.e("deleteDataSuccess", message);
+    }
+
+    @Override
+    public void deleteDataError(String error) {
+        Log.e("deleteDataError", error);
+    }
+
+    @Override
+    public void getAllMovie(List<MyMovie> myMovieList) {
+        view.setUpDataToRecycle(myMovieList);
+    }
+
+    /*Presenter Interface*/
+    @Override
+    public void getAllMyMovieFromRealm() {
+        myMovieRepository.getListMyMovie();
+    }
+
+    @Override
+    public void addMovie(MyMovie myMovie) {
+        myMovieRepository.addMyMovie(myMovie);
+    }
+
+    @Override
+    public void updateMovie(String movieName, String title, String desc, Boolean video) {
+        myMovieRepository.updateMyMovie(movieName, title, desc, video);
+    }
+
+    @Override
+    public void deleteMovie(String movieName) {
+        myMovieRepository.deleteMyMovie(movieName);
     }
 }
