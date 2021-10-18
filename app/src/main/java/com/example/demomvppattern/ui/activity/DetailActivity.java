@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,12 +28,12 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity implements IDetailMovieContract.DetailView, View.OnClickListener {
     private final List<TheMovie> theMovieList = new ArrayList<>();
-
+    private DetailMoviePresenter detailMoviePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        DetailMoviePresenter detailMoviePresenter = new DetailMoviePresenter(this, this);
+        detailMoviePresenter = new DetailMoviePresenter(this, this);
 
     }
 
@@ -60,6 +61,7 @@ public class DetailActivity extends AppCompatActivity implements IDetailMovieCon
         TextView tvVoteAverage = findViewById(R.id.tvVoteAverage);
         TextView tvMovieTime = findViewById(R.id.tvMovieTime);
         TextView tvMovieNameReal = findViewById(R.id.tvMovieNameReal);
+        TextView tvBookNow = findViewById(R.id.tvBookNow);
         RecyclerView rcCast = findViewById(R.id.rcCast);
         ImageView imgBanner = findViewById(R.id.imgBanner);
         ImageView imgBack = findViewById(R.id.imgBack);
@@ -69,6 +71,7 @@ public class DetailActivity extends AppCompatActivity implements IDetailMovieCon
         imgBack.setOnClickListener(this);
         imgLike.setOnClickListener(this);
         imgPlay.setOnClickListener(this);
+        tvBookNow.setOnClickListener(this);
 
         CastAdapter castAdapter = new CastAdapter(theMovieList);
         rcCast.setAdapter(castAdapter);
@@ -82,6 +85,20 @@ public class DetailActivity extends AppCompatActivity implements IDetailMovieCon
 
     }
 
+    @Override
+    public void showDiaLog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Like Movie ?");
+        builder.setMessage("Do you want to like this video ?");
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            Toast.makeText(DetailActivity.this, "Like", Toast.LENGTH_SHORT).show();
+            dialog.cancel();
+        });
+
+        builder.setNegativeButton("Canel", (dialog, which) -> dialog.dismiss());
+        builder.create().show();
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
@@ -90,10 +107,13 @@ public class DetailActivity extends AppCompatActivity implements IDetailMovieCon
                 finish();
                 break;
             case R.id.imgLike:
-                Toast.makeText(this, "Movie Liked", Toast.LENGTH_SHORT).show();
+                detailMoviePresenter.handleClickLikeMovie();
                 break;
             case R.id.imgPlay:
-                Toast.makeText(this, "Sorry, we cannot find Video", Toast.LENGTH_SHORT).show();
+                detailMoviePresenter.handleClickWatchMovie();
+                break;
+            case R.id.tvBookNow:
+                detailMoviePresenter.handleClickBookMovie();
                 break;
         }
     }

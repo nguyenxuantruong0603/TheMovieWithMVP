@@ -4,13 +4,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.demomvppattern.R;
-import com.example.demomvppattern.listener.IClickItemAdapter;
+import com.example.demomvppattern.listener.IClickItemTheMovie;
 import com.example.demomvppattern.model.movie.TheMovie;
 import com.squareup.picasso.Picasso;
 
@@ -20,11 +19,11 @@ import java.util.List;
 
 public class ImageSlideAdapter extends PagerAdapter {
     private final List<TheMovie> theMovieList;
-    private IClickItemAdapter iClickItemAdapter;
+    private IClickItemTheMovie iClickItemTheMovie;
 
-    public ImageSlideAdapter(List<TheMovie> theMovieList, IClickItemAdapter iClickItemAdapter) {
+    public ImageSlideAdapter(List<TheMovie> theMovieList, IClickItemTheMovie iClickItemTheMovie) {
         this.theMovieList = theMovieList;
-        this.iClickItemAdapter = iClickItemAdapter;
+        this.iClickItemTheMovie = iClickItemTheMovie;
     }
 
     @NotNull
@@ -36,7 +35,7 @@ public class ImageSlideAdapter extends PagerAdapter {
         ImageView imgBanner = view.findViewById(R.id.imgPoster);
         Picasso.get().load("https://image.tmdb.org/t/p/w500" + theMovieList.get(position).getPosterPath()).into(imgBanner);
 
-        view.setOnClickListener(v -> iClickItemAdapter.click(theMovieList.get(position)));
+        view.setOnClickListener(v -> iClickItemTheMovie.click(theMovieList.get(position)));
         container.addView(view);
         return view;
     }

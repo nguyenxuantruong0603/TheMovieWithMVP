@@ -70,7 +70,6 @@ public class MyMovieRepository implements IHomeContract.MyMovieRepo {
     public void getListMyMovie() {
         RealmResults<MyMovie> movieRealmResults = realm.where(MyMovie.class).findAll();
         myMovieListener.getAllMovie(movieRealmResults);
-        realm.close();
 
 //           filter a collection in DB
             /* RealmResults<Task> TasksThatBeginWithN = Tasks.where().beginsWith("name", "N").findAll();

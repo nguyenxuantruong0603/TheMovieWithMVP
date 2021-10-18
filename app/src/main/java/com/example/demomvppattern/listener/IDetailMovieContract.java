@@ -4,6 +4,7 @@ public interface IDetailMovieContract {
 
     interface DetailView {
         void setUpUI();
+        void showDiaLog();
     }
 
     interface Presenter {

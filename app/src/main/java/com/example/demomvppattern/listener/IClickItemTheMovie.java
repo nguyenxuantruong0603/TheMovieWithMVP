@@ -2,6 +2,6 @@ package com.example.demomvppattern.listener;
 
 import com.example.demomvppattern.model.movie.TheMovie;
 
-public interface IClickItemAdapter {
+public interface IClickItemTheMovie {
     void click(TheMovie theMovie);
 }

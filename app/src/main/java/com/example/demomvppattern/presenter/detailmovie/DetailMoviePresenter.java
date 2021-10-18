@@ -17,12 +17,12 @@ public class DetailMoviePresenter implements IDetailMovieContract.Presenter {
 
     @Override
     public void handleClickWatchMovie() {
-        Toast.makeText(context, "We can not watch Video", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Sorry! We can not watch Video", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void handleClickLikeMovie() {
-
+        detailView.showDiaLog();
     }
 
     @Override

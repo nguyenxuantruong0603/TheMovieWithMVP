@@ -41,21 +41,40 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/tvVoteAverage"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+    <RelativeLayout
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/bg_tv_count"
         android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/imgBack"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="8.5" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_img_transparent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tvVoteAverage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_tv_count"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="8.5" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/imgLike"
@@ -103,7 +122,6 @@
         app:layout_constraintStart_toEndOf="@id/tvAction" />
 
     <TextView
-        android:textSize="14sp"
         android:id="@+id/tvMovieTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -111,6 +129,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="24dp"
         android:textColor="@color/white"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/tvAction"
         app:layout_constraintStart_toStartOf="parent" />
 

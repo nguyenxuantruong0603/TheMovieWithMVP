@@ -17,7 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.demomvppattern.R;
 import com.example.demomvppattern.adapter.recycleview.NewMoviesAdapter;
 import com.example.demomvppattern.adapter.viewpager.ImageSlideAdapter;
-import com.example.demomvppattern.listener.IClickItemAdapter;
+import com.example.demomvppattern.listener.IClickItemTheMovie;
 import com.example.demomvppattern.listener.IFavouriteContract;
 import com.example.demomvppattern.model.movie.TheMovie;
 import com.example.demomvppattern.presenter.favourite.FavouritePresenter;
@@ -31,7 +31,7 @@ import java.util.Objects;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class FavoriteFragment extends Fragment implements IFavouriteContract.HomeView, IClickItemAdapter {
+public class FavoriteFragment extends Fragment implements IFavouriteContract.HomeView, IClickItemTheMovie {
 
     private final List<TheMovie> movieList = new ArrayList<>();
     private NewMoviesAdapter newMoviesAdapter;

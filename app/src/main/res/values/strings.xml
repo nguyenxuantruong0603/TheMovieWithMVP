@@ -25,4 +25,7 @@
     <string name="cast">Cast</string>
     <string name="action">Action</string>
     <string name="horror">Horror</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="add_new_movie">Thêm Phim</string>
 </resources>
