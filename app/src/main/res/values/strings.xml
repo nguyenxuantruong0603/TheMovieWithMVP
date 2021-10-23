@@ -31,4 +31,6 @@
     <string name="movie_name">Movie Name</string>
     <string name="movie_title">Movie Title</string>
     <string name="movie_description">Movie Description</string>
+    <string name="update_movie">Cập nhật lại phim</string>
+    <string name="update_my_movie">Cập nhật</string>
 </resources>

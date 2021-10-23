@@ -1,6 +1,7 @@
 package com.example.demomvppattern.ui.fragment.home;
 
-import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,40 @@ public class HomeFragment extends Fragment implements IHomeContract.View, IClick
     /* IClickItemMyMovie Interface */
     @Override
     public void clickUpdate(MyMovie myMovie) {
-        homePresenter.updateMovie(myMovie.getMovieName(), "ối giời ôi", "ngáo ngơ rồi", false);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_update_movie, null);
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        EditText edtUpdateMovieName;
+        EditText edtUpdateMovieTitle;
+        EditText edtUpdateMovieDescription;
+        TextView tvUpdateMyMovie;
+
+        edtUpdateMovieName = view.findViewById(R.id.edtUpdateMovieName);
+        edtUpdateMovieTitle = view.findViewById(R.id.edtUpdateMovieTitle);
+        edtUpdateMovieDescription = view.findViewById(R.id.edtUpdateMovieDescription);
+        tvUpdateMyMovie = view.findViewById(R.id.tvUpdateMyMovie);
+
+        edtUpdateMovieName.setText(myMovie.getMovieName());
+        edtUpdateMovieTitle.setText(myMovie.getMovieTitle());
+        edtUpdateMovieDescription.setText(myMovie.getMovieDescription());
+
+        tvUpdateMyMovie.setOnClickListener(v -> {
+            if (edtUpdateMovieDescription.getText().toString().equals("") || edtUpdateMovieName.getText().toString().equals("") || edtUpdateMovieTitle.getText().toString().equals("")) {
+                Toast.makeText(requireContext(), "Bạn cần điền đầy đủ thông tin phim", Toast.LENGTH_SHORT).show();
+            } else {
+                homePresenter.updateMovie(myMovie.getMovieName(), edtUpdateMovieTitle.getText().toString(), edtUpdateMovieDescription.getText().toString(), false);
+                Toast.makeText(requireContext(), "Cập nhật phim thành công", Toast.LENGTH_SHORT).show();
+                homePresenter.getAllMyMovieFromRealm();
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+
     }
 
     @Override
@@ -88,15 +122,14 @@ public class HomeFragment extends Fragment implements IHomeContract.View, IClick
         builder.create().show();
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tvAddMovie) {
             AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
             View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_movie, null);
             builder.setView(view);
-            builder.setTitle("Thêm Mới Phim");
             AlertDialog alertDialog = builder.create();
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             EditText edtMovieName, edtMovieTitle, edtMovieDescription;
             TextView tvAddMyMovie;
 
