@@ -34,17 +34,22 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="48dp" />
+            android:layout_marginBottom="48dp"
+            android:gravity="center"
+            android:textColor="#AE0000"
+            android:textSize="16sp" />
 
         <TextView
-            android:textStyle="bold"
-            android:layout_margin="8dp"
             android:id="@+id/tvMyMovieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:textColor="#AE0000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <TextView
@@ -52,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:paddingBottom="8dp"
         android:text="@string/update"
         android:textColor="#5C5B5B"
         android:textSize="20sp"
@@ -64,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:paddingBottom="8dp"
         android:text="@string/delete"
         android:textColor="#5C5B5B"
         android:textSize="20sp"

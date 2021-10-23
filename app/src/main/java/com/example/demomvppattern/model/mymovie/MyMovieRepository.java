@@ -26,13 +26,7 @@ public class MyMovieRepository implements IHomeContract.MyMovieRepo {
     @Override
     public void addMyMovie(MyMovie myMovie) {
         realm.executeTransactionAsync(realm -> realm.insert(myMovie),
-                () -> {
-                    myMovieListener.addDataSuccess("Success add " + myMovie.getMovieName());
-                    realm.close();
-                }, error -> {
-                    myMovieListener.addDataError("Fail add " + myMovie.getMovieName() + error.getMessage());
-                    realm.close();
-                });
+                () -> myMovieListener.addDataSuccess("Success add " + myMovie.getMovieName()), error -> myMovieListener.addDataError("Fail add " + myMovie.getMovieName() + error.getMessage()));
     }
 
     @Override
@@ -42,13 +36,7 @@ public class MyMovieRepository implements IHomeContract.MyMovieRepo {
             Objects.requireNonNull(myMovie).setMovieTitle(title);
             Objects.requireNonNull(myMovie).setMovieDescription(desc);
             Objects.requireNonNull(myMovie).setMovieVideo(video);
-        }, () -> {
-            myMovieListener.updateDataSuccess("Update thành công");
-            realm.close();
-        }, error -> {
-            myMovieListener.updateDataError(error.getMessage());
-            realm.close();
-        });
+        }, () -> myMovieListener.updateDataSuccess("Update thành công"), error -> myMovieListener.updateDataError(error.getMessage()));
     }
 
     @Override
@@ -56,13 +44,7 @@ public class MyMovieRepository implements IHomeContract.MyMovieRepo {
         realm.executeTransactionAsync(realm -> {
             MyMovie myMovie1 = realm.where(MyMovie.class).equalTo("movieName", movieName).findFirst();
             Objects.requireNonNull(myMovie1).deleteFromRealm();
-        }, () -> {
-            myMovieListener.deleteDataSuccess("Delete Success" + movieName);
-            realm.close();
-        }, error -> {
-            myMovieListener.deleteDataError(error.getMessage());
-            realm.close();
-        });
+        }, () -> myMovieListener.deleteDataSuccess("Delete Success" + movieName), error -> myMovieListener.deleteDataError(error.getMessage()));
 
     }
 

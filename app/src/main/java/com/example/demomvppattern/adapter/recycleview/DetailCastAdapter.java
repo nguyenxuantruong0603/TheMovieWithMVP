@@ -16,11 +16,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CastAdapter extends RecyclerView.Adapter<CastAdapter.Holder> {
+public class DetailCastAdapter extends RecyclerView.Adapter<DetailCastAdapter.Holder> {
 
     private final List<TheMovie> theMovieList;
 
-    public CastAdapter(List<TheMovie> theMovieList) {
+    public DetailCastAdapter(List<TheMovie> theMovieList) {
         this.theMovieList = theMovieList;
     }
 

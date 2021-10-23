@@ -17,7 +17,7 @@ import androidx.core.view.WindowCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demomvppattern.R;
-import com.example.demomvppattern.adapter.recycleview.CastAdapter;
+import com.example.demomvppattern.adapter.recycleview.DetailCastAdapter;
 import com.example.demomvppattern.listener.IDetailMovieContract;
 import com.example.demomvppattern.model.movie.TheMovie;
 import com.example.demomvppattern.presenter.detailmovie.DetailMoviePresenter;
@@ -73,8 +73,8 @@ public class DetailActivity extends AppCompatActivity implements IDetailMovieCon
         imgPlay.setOnClickListener(this);
         tvBookNow.setOnClickListener(this);
 
-        CastAdapter castAdapter = new CastAdapter(theMovieList);
-        rcCast.setAdapter(castAdapter);
+        DetailCastAdapter detailCastAdapter = new DetailCastAdapter(theMovieList);
+        rcCast.setAdapter(detailCastAdapter);
 
         tvVoteAverage.setText(theMovie.getVoteAverage() + "");
         tvMovieName.setText(theMovie.getTitle());
